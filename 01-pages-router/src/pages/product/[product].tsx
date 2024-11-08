@@ -31,25 +31,25 @@ export default DetailProductPage;
 
 // Server Side
 
-// export async function getServerSideProps({
-//   params,
-// }: {
-//   params: { product: string };
-// }) {
-//   console.log(params.product);
+export async function getServerSideProps({
+  params,
+}: {
+  params: { product: string };
+}) {
+  console.log(params.product);
 
-//   // fetch data
-//   const res = await fetch(
-//     `http://localhost:3000/api/product/${params.product}`
-//   );
-//   const response = await res.json();
+  // fetch data
+  const res = await fetch(
+    `http://localhost:3000/api/product/${params.product}`
+  );
+  const response = await res.json();
 
-//   return {
-//     props: {
-//       product: response.data,
-//     },
-//   };
-// }
+  return {
+    props: {
+      product: response.data,
+    },
+  };
+}
 
 // Static Side
 
