@@ -1,9 +1,17 @@
 .navbar {
   display: flex;
   width: 100%;
-  height: 30px;
+  height: 40px;
   background-color: #000;
   color: #fff;
   align-items: center;
   padding: 0 5%;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  padding: 4px 10px;
 }
