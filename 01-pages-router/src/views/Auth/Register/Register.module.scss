@@ -1,0 +1,43 @@
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  &__title {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  &__error {
+    color: #fd3131;
+    margin-bottom: 10px;
+  }
+  &__form {
+    width: 50%;
+    padding: 20px;
+    box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.5);
+    margin-bottom: 20px;
+    &__item {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+      &__input {
+        padding: 10px;
+        background-color: #eee;
+        margin-top: 5px;
+      }
+      &__button {
+        background-color: #000000;
+        color: #fff;
+        width: 100%;
+        padding: 10px;
+      }
+    }
+  }
+  &__link {
+    a {
+      color: #23bebe;
+    }
+  }
+}
