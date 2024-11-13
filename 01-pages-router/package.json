@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --passWithNoTests -u",
+    "test:cover": "npm run test -- --coverage",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@types/node": "22.8.7",
@@ -24,10 +27,17 @@
     "typescript": "5.6.3"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
     "@types/bcrypt": "^5.0.2",
+    "@types/jest": "^29.5.14",
     "autoprefixer": "^10.4.20",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.47",
     "sass": "^1.80.6",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "ts-node": "^10.9.2"
   }
 }
