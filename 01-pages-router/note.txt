@@ -1,0 +1,99 @@
+Belajar Framework Next Js Menggunakan Pages Router
+
+1. Pendahuluan:
+	- untuk membagun aplikasi menggunakan framework next js hal yang perlu di perhatikan yaitu, user interface, routing, data fetching, rendering, integrations, infrastructure, performance, scalabilitiy, dan yang terakhir developer experience
+	- Next Js adalah sebuah framewok yang diatas react jadi bisa di katakana yaitu react framework yang mana sifatnya flexible dan menyediakan fitur-fitur untuk membuat aplikasi web dengan cepat
+	- apakah react aja nggak cukup? kenapa harus menggunakan next Js? alasannya adalah react itu memang menyediakan fungsi-fungsi yang bisa dimanfaatkan untuk membangun ui tapi dia sifatnya unopinionated artinnya kita sebagai developer harus menentukan Kembali misalnya system untuk routingnya harus pakai react router dan lain sebagainya dan akhirnya banyak kali ekosistem reactnya yang di kembangkan oleh third party gtunya dan perkembangannya sangat tentu cepat hal tersebut tentu hal positif banyak sekali pilihan, tapi di satu sisi Ketika kita nggak ngerti setupnya nya bukan nya malah jadi bagus malah bikin programmernya binggung untuk melakukan setupnya seperti apa, sehingga untuk membagun aplikasi dengan react kalau  secara utuh pasti butuh effort ter Utama untuk mengkonfigurasi alat dan juga mungkin solusi-solusi yang nanti akan di berikan aplikasinya, solusinya untuk menghandle hal tersebut kita bisa pakai yang Namanya next js dimana next js itu menyediakan tools dan konfigurasi yang mana bisa kita manfaatkan untuk mendevolp aplikasi mennggunakan react dimana dia menyediakan struktur, fitur, dan optimasi 
+	- bagaimana next js bekerja? jika kita mendevelop sebuah aplikasi itu menjadi terbagi beberapa bagian ada development, kemudian production kalau di indsutri itu ada juga staging dimana development next js memanjakan developer sedangkan production memanjakan end users, hal tersebut bisa terjadi karena next js menggunakan swc atau speedy web compiler yang dimana dia sebagai compiler yang ditulis dengan Bahasa rust yang dapat digunakan untuk melakukan compiling, bundling, minifiying dan code spiliting yang dimana next js dibagun dengan react, turbopack dan speedy web compiler
+	- compiling yaitu adalah proses mentransformasi kode dari satu Bahasa ke dalam Bahasa lain atau versi lain dari Bahasa tersebut
+	- kemudian setelah proses compiling dia melakukan minifying dimana yaitu proses menghapus formatting dan komentar-komentar yang tidak digunakan tanpa mengubah fungsionalitas kode dengan tujuan untuk meningkatkan kinerja aplikasi dengan mengurangi ukuran fie
+	- setelah melakukan minifying next js akan melakukan proses bundling dimana proses bundling ini adalah mengabungkan file kedalam bundel yang kemudian di optimalkan untuk browser, yang mana tujuannya mengurangi jumlah permintaan file saat pengguna mengunjungi halaman web
+	- setelah di bundle next js akan melakukan yang Namanya code spitting artinya setelah dibungkus satu bundle besar dia akan pisah-pisah lagi bagian-bagian lebih kecil yang mana nantinya mungkin bagian-bagian tersebut akan dibutuhkan oleh setiap entry point, entry point ini adalah url yang tujuannya untuk meningkatkan initial load  time, jadi Ketika kita membuka sebuah halaman itu kita hanya menggunakan file yang di butuhkan halaman tersebut jadi kita tidak perlu me load halaman lain Ketika halaman nya dibuka itu akan jauh lebih cepat
+	- kecantikan dari next js yaitu kita bisa menentukan untuk halaman mana yang mau dirender secara server side kemudian halaman mana yang mau dirender secara client side dan halaman mana yang bisa di render secara static side dan itu bisa kita atur per halaman contohnya halaman homepage kita bisa atur dengan client side dan halaman blog kita atur sebagai sebagai server side dan itu adalah sebuah kecantikan dari next js
+
+2. Setup Project:
+	- ada 2 using di next js, yaitu using pages router dan using app router
+	- npx create-next-app@latest
+
+3. Pages & Layout:
+	- Ketika kita membuat routing menngunakan pages router apapupun yang ada di dalam folder pages itu menjadi routingnya
+	- nested routing yaitu roting nya didalam folder sesuai dengan nama atau roting juga bisa sesuai nama file
+	- nesting roting yaitu sebuah struktur bersarang didalam folder pages
+	- dynamic routing yaitu memungkinkan kita mengakses beberapa halaman berbeda sesuai dengan parameter yang diinginkan dalam satu file saja. Konsep ini cocok diaplikasikan pada halaman-halaman yang spesifik dan dinamis seperti post article blog dan halaman produk pada e-commerce
+
+4. Link & Navigation:
+	- di next js punya link tersedia sehingga Ketika pindah halaman tidak merefresh halamannya
+	- untuk link di next js kita bisa gunakan import Link from "next/link"
+
+5. Styling:
+	- install sebuah framework sass => npm i --save-dev sass
+	- install sebuah framework tailwind => npm i -D tailwindcss postcss autoprefixer setelah itu kita Ketika perintah npx tailwindcss init -p
+
+6. Custom Error Page & Document:
+	- untuk setiap page menampilkan title gunakan tag head untuk title di setiap halamnnya atau pagenya
+	- import Head from "next/head";
+	- <Head><title>Home</title></Head>
+	- di dalam file _document kita bisa menyimpan yaitu google analitik, pixels analitik, tiktik analitik itu bisa menggunkan head di dalam file_document, karena itu akan digunakan di seluruh halaman
+	- website referensi ilustrasi page 404 : https://undraw.co/
+
+7. API Routes:
+	- next js bukan hanya sekedar framework frontend tapi juga bisa digunakan fullstack
+	- databasenya pakai firebase di firestore database
+
+8. Client-Side Rendering:
+	- proses pengambilan data eksternal dan tranformasi kode menjadi representasi html dari sebuah ui terjadi di client (client-side) dan ini bersifat device karena client side
+	- Ketika data product nya belum ready solusinya buat loading atau skecelton atau kerangka belulang
+	- library swr adalah sebuah react hooks untuk data fetching dan ini dari vercel juga, dan swr ini juga bukan digunakan untuk client side rendering aja di support juga static side generation, dan juga server side rendering
+
+9. Server-Side Rendering:
+	- bahwa server side rendering ini merupakan salah satu konsep pre rendering yang ada di dalam next js 
+	- server side rendering itu adalah html di generate kmeudi html, data dan javascript dikirim ke clinet yang dilakukan saat run time
+
+10. Static Site Generation:
+	- static site generation yaitu html akan di generate di server namun hanya di generate sekali saat build time, sehingga content yang ditampikan bersifat statis.
+
+11. Rendering Dynamic Routes:
+	- Ketika kita ingin menggunakan client side rendering didalam dynamic routing itu adalah kita tangkap dulu query nya menggunakan use router, stelah ditangkap query nya baru kita fetch datanya disini mennggunakan use swr
+	- kalau server side dan static side itu sama tidak membutuhkan loading dahulu jadi langsung aja yang dibutuhkan hanya data productnya langsung 
+	- nah terus untuk pemanggilannya itu untuk server side rendering kita gunakan sama untuk method nya Ketika kita ambil semua datanya itu menggunkan getstaticprops tapi kita tangkap parameternya apa? yaitu berupa product, nah kenapa product? nah kita sesuaikan dengan nama filenya
+
+12. Incremental Static Regeneration:
+	- revalidate ini nantinya akan menjadii yang me trigger untuk melakukan generate page, jadi Ketika kita membuka halamannya dia akan mencoba untuk mencek dulu gitunya ke apinya, apakah api ini perbeda dengan data yang sudah di catch sebelumnya, nah kalau perbeda dia akan mencoba untuk melakukan yang Namanya revalidate
+	- http://localhost:3000/api/revalidate?data=product&token=12345678
+
+13. Middleware:
+	- Middleware yaitu memungkinkan untuk merunning code sebelum requestnya selesai dilakukan 
+	- Middleware yaitu itu sebuah code yang di jalankan sebelum saya melakukan akses ke halaman
+
+14. Setup Next-Auth:
+	- npm install next-auth
+	- npm install next-auth --force
+
+15. Auth Register:
+	- npm install bcrypt
+	- npm i --save-dev @types/bcrypt
+
+16. .Login Multi Role:
+	-    if (!token) {
+        const url = new URL("/auth/login", req.url);
+        url.searchParams.set("callbackUrl", encodeURI(req.url));
+        return NextResponse.redirect(url);
+      }
+	-  if (token.role !== "admin" && onlyAdmin.includes(pathname)) {
+        return NextResponse.redirect(new URL("/", req.url));
+      }
+
+17. Login Google:
+	- link configurasi untuk login menggunakan google : https://console.developers.google.com/apis/credentials
+
+18. Optimization:
+	- optimasi script misalkan kita memanggil script ini adalah dari script dari luar contohnya adalah goggle analitik nah itu cukup berat kalau kita lakuakan panggil dari awal nah makanya ada yang dinamakan strategi di dalam text script ini, nah ini kerennya kalau misalkan kita gunakan strategi nya, nah ini kepake banget kalau teman-teman sudah pakai google analitik, facebook analik dan lain sebagainya
+	- dan terakhir yang bisa kita lakukan untuk melakukan optimasi adalah lazy load component menggunakan next dynamic atau bisa juga di sebut sebgai dynamic import, nah disini di react juga ada namnya adalah react lazy dan juga suspend gitu kalau di react, nah kalau misalkan di next kita bisa gunakan next dynamic nya
+
+19. Unit Testing:
+	- npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node
+	- npm i --save-dev @types/jest
+	- npm run test:cover
+
+20. Hosting Vercel:
+	- implementasi deploy project ke vercel
