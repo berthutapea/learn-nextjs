@@ -1,9 +1,7 @@
-import Navbar from "./navbar";
-
 export default function ProPage() {
   return (
     <div>
-      <Navbar />
+      <h1>Profile Page</h1>
     </div>
   );
 }
