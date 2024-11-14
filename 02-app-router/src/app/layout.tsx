@@ -3,8 +3,8 @@
 // import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./navbar";
-import { useState } from "react";
+// import Navbar from "./navbar";
+// import { useState } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,15 +27,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [state, setState] = useState(0);
+  // const [state, setState] = useState(0);
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <div>Layout {state}</div>
-        <button onClick={() => setState(state + 1)}>Klik</button>
+        {/* <Navbar /> */}
+        {/* <div>Layout {state}</div> */}
+        {/* <button onClick={() => setState(state + 1)}>Klik</button> */}
         {children}
       </body>
     </html>
