@@ -3,17 +3,31 @@ import { NextRequest, NextResponse } from "next/server";
 const data = [
   {
     id: 1,
-    title: "Sepatu Baru",
-    price: 1000000,
+    title: "Nike Pegasus 41 Blueprint",
+    price: 2099000,
     image:
-      "https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/ca0a76ab-8bca-4d52-aed8-99dab7625cdd/dunk-low-shoes-g54Fbv.png",
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/4615e080-c7a7-470e-b96a-02370aba3276/AIR+ZOOM+PEGASUS+41+FP.png",
   },
   {
     id: 2,
-    title: "Sepatu Baru Dong",
-    price: 1000000000,
+    title: "Nike Mercurial Superfly 10 Academy",
+    price: 1499000,
     image:
-      "https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/ca0a76ab-8bca-4d52-aed8-99dab7625cdd/dunk-low-shoes-g54Fbv.png",
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a10e080b-1985-48dc-83d5-ce0d86a294b7/ZM+SUPERFLY+10+ACADEMY+TF.png",
+  },
+  {
+    id: 3,
+    title: "Giannis Freak 6 EP",
+    price: 2199000,
+    image:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cad08379-10fd-45a9-98db-5689453f8353/GIANNIS+FREAK+6+NRG+EP.png",
+  },
+  {
+    id: 4,
+    title: "Giannis Freak 6 EP",
+    price: 2199000,
+    image:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cad08379-10fd-45a9-98db-5689453f8353/GIANNIS+FREAK+6+NRG+EP.png",
   },
 ];
 
