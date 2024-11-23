@@ -22,7 +22,7 @@ export default function AdminProductPage() {
   };
 
   return (
-    <div>
+    <div className="w-3/6 h-96 bg-gray-300 rounded-[12px] flex justify-center items-center mr-5">
       <h1>{status}</h1>
       <button
         className="bg-black text-white p-3 m-5"
