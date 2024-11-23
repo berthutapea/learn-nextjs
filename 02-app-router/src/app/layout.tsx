@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "./navbar";
 // import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,17 +31,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const [state, setState] = useState(0);
   const pathname = usePathname();
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {!disableNavbar.includes(pathname) && <Navbar />}
-        {/* <div>Layout {state}</div> */}
-        {/* <button onClick={() => setState(state + 1)}>Klik</button> */}
-        {children}
+        <SessionProvider>
+          {!disableNavbar.includes(pathname) && <Navbar />}
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
