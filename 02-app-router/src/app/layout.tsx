@@ -1,23 +1,13 @@
 "use client";
 
-// import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./navbar";
-// import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
+// import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 const disableNavbar = ["/login", "/register"];
 
@@ -28,15 +18,13 @@ const disableNavbar = ["/login", "/register"];
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const pathname = usePathname();
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={inter.className}>
         <SessionProvider>
           {!disableNavbar.includes(pathname) && <Navbar />}
           {children}
