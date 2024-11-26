@@ -48,7 +48,7 @@ export async function register(data: {
   if (users.length > 0) {
     return { status: false, statusCode: 400, message: "Email already exist" };
   } else {
-    data.role = "admin";
+    data.role = "member";
     data.password = await bcrypt.hash(data.password, 10);
 
     try {
