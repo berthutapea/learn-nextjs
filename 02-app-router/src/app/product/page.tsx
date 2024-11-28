@@ -1,7 +1,7 @@
 import { getData } from "@/services/products";
+import Image from "next/image";
 import Link from "next/link";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 type ProductPageProps = { params: { slug: string[] } };
 
 export default async function ProductPage(props: ProductPageProps) {
@@ -21,10 +21,13 @@ export default async function ProductPage(props: ProductPageProps) {
             key={product.id}
             className="w-11/12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5"
           >
-            <img
+            <Image
               className="p-8 rounded-t-lg object-cover w-full h-96"
               src={product.image}
               alt="product image"
+              width={500}
+              height={500}
+              loading="lazy"
             />
             <div className="px-5 pb-5">
               <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">
