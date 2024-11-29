@@ -1,0 +1,132 @@
+Belajar Framework Next Js Menggunakan App Router
+
+1. Setup Project:
+	- npx create-next-app@latest
+	- Ketika kita membuat sebuah routing di dalam app router kalau kita lihat disini ada segmentasi dulu ya, kita bahas dari segmentasi dulu jadi di setiap folder itu mempresentasikan segmentasi route nya dan url nya nanti akan di mampping ke dalam segmentasi tersebut sehingga membuat nested route itu kita bisa menyimpan folder nya di dalam folder lainnya
+
+2. Layout & Template:
+	- layout adalah dimana ui yang di shared diantara multiple pages jadi nanti layout ini bisa di akses oleh multiple pages, di dalam navigation layouts itu biasanya berisi state, remain interactive dan juga tidak melakukan re render dan layout itu juga bisa kita nesred artinya kita bisa gunakan layout bersarang
+	- Template ini bisa dikatakan mirip dengan layout tapi dia nggak kayak layout yang dimana dia bisa digunakan di setiap route dan juga bisa digunakan untuk maintance state, nah template ini dia akan membuat instance baru untuk setiap turunan di dalam navigasi nya
+	- kalua mau menggunakan usestate maka harus menggunakan "use client" jadi dia sifatnya client component bukan server component
+	-  perbedaan layout dan template yaitu untuk layout statenya di bawa sedangkan template state nya nggak di bawa atau new instance dia melakukan instace ulang artinya adalah si template ini di reset Kembali
+
+3. Group & Dynamic Routes:
+	- untuk membuat group kita buat tanda () untuk di folder sehingga tidak menjadi routing
+	- untuk grouping itu setiap routenya bisa juga kita berikan layout yang berbeda beda jadi sama saja Ketika kita membuat layout kan bisa secara global kalau kita simpannya di luar tapi kalau kita buat juga layout di dalam folder auth atau admin itu bisa juga
+	- dynamic routes yaitu bisaanya berhubungan dengan slug
+	- kalau di app router dynamic routes pakai folder sedangkan pages router memakai file
+
+4. Link & Navigation:
+	- di dalam link dan navigating ada 2 metode yaitu yang pertama menggunakan link kompenen dan yang kedua menggunakan useRouter
+
+5. API Route Handlers:
+	- route handler yaitu megizinkan kita untuk membuat custom request handlers menggunakan web request dan respon api nah jadi ini mirip hamper dengan api handler yang ada di dalam pages router
+	- untuk membuat route handlers yaitu mendefinisikan menjadi sebuah file yaitu route.js|ts di dalam app directory 
+	- route handle bisa di nested di dalam ap directory seperti page dan layout tapi dia tidak bisa di dalam route segemen yang sama dengan page.js, jadi kalua ada page.js route.js itu tidak bisa di akses 
+	- nah kemudian dia mensuport http method yaitu seperti get, post, put, patch, delete, head dan options
+
+6. Data Fetching:
+	- jadi next js itu secara native dia bisa menggunakan fetch nya dari web api yang mana memperbolehkan kita untuk mengkonfigurasi caching dan revalidating dimana kita bisa menggunakan fetch dengan async/await dialam server components kemudian bisa kita lakukan juga di dalam route handler dan juga sever action
+
+7. Caching & Revalidating:
+	- caching itu artinya adalah kita tidak membutuhkan lagi untuk melakukan fetch data setiap mau melakukan request, jadi secra default next js secara otomatis akan melakukan cache dan me return value dari hasil fetch tersebut bukan dari apinya tapi dari data cache di dalam server, jadi sudah di caching terlebih dahulu, nah dalam hal ini dia bisa nge fetch data pada saat build time atau pada saat request time kemudian di cache dan juga bisa digunakan lagi setiap kali kita me request untuk membutuhkan data tersebut
+	- revalidate yaitu adalah sebuah proses untuk purging data ke dalam data cache dan melakukan refacth terhadap data terakhir dan ini berguna Ketika datanya berubah kita ingin memastikan yang ditampilkan adalah informasi yang terakhir 
+	- ada 2 cara untuk melakukan revalidate tehadap cache yaitu adalah time based revalidation dan juga on demand revalidation
+	- nah katanya di sini time based revalidation itu dia otomatis akan melakukan revalidate setelah kian Waktu yang kita set yang sudah terlewat dia akan melakukan revalidate, nah jadi dia disini berdasarkan Waktu yang kita set
+	- kemudian ada yang Namanya on demand revalidation yaitu adalah melakukan revalidate secara manual, jadi dia manual melakukan revalidate berdasarkan event tertentu
+	- fungsi revalidate yaitu untuk ngejar performace system tersebut
+
+8. Loading UI & Error Handling:
+	- loading ui yaitu merupakan sebuah loading state yang di load terlebih dahulu sembari nunggu content nya seleai di load 
+	- kalau di next js di app router di sediakan langsung untuk fitur loadingnya, cukup buat file loading.jsx|tsx
+	- kita tidak perlu lagi buat pegecekannya cukup buat file loading.tsx nya di dalam folder yang dibutuhkan
+	- untuk menghadle halaman error kita cukup buat sebuah file error.jsx|tsx
+
+9. Middleware:
+	- jadi berdasarkan dokumentasi nextjs katanya middleware memungkinkan kita untuk menjalankan code sebelum requestnya selesai kemudian berdasarkan request kita bisa melakukan modifikasi terhadap responnya baik itu rewriting, redicting, modifying the request ataupun response headers dan juga responding directly
+	- middleware itu di run sebelum content di cache dan juga route match nya dan disini katanya untuk menggunakan file middleware itu bisa di simpannya di dalam route dari projectnya untuk mendefinikasikan middlewarenya contohnya disini adalah dimana kita harus menyimpan middleware itu sejajar dengan folder pages ataupun app di dalam src 
+	- matcher adalah memungkinkan kita untuk memfilter middleware itu berjalan pada path yang spesifik
+
+10. Parallel Routes:
+	- parallel routes ini yaitu memungkinkan kita untuk melakukan codicional render terhadap sebuah page atau lebih di dalam layout yang sama, contohnya di dalam dashboard dan feeds on social sites
+	- jadi parallel routing itu bisa digunakan untuk mengimplementasikan pattern routing yang lumayan kompleks
+
+11. Intercepting Route:
+	- intercepting route yaitu memungkinkan kita untuk me load sebuah route dari part aplikasi yang lain dengan layout saat ini 
+	- paragdigma route seperti ini bisa berguna Ketika kita ingin menampilkan konten dari sebuah route tanpa user melakukan switch ke konteks yang lain artinya ke page yang lain
+	- convention (.) yaitu untuk segmen dengan level yang sama 
+	- convention (..) yaitu jika segmennya ada di luar sebuah folder misalnya 
+	- convention (..)(..) yaitu untuk dua level diatasnya 
+	- convention (...) yaitu jika segmen berada di app directory
+
+12. Connect Firebase DB:
+	- npm install firebase
+
+13. Setup Next-Auth:
+	- npm i next-auth@4.24.3
+
+14. Auth Register:
+	- npm i bcrypt
+	- npm i --save-dev @types/bcrypt
+
+15. Login System:
+	- login system menggunkan database firebase
+
+16. Login Multi Role:
+	- kenapa Ketika belum login bisa kelihatan dashboard nya? karena dia masih dirender di sisi client untuk si pengecekannya, harusnya untuk best practice nya adalah kalau kita buat pembatasan seprti ini kita akan menggunakan middleware
+
+17. Login With Google:
+	- google developer console
+	- api & services => enabled api & services
+
+18. Optimization:
+	- jadi di dalam built in components itu teryata ada beberapa component yang bisa kita manfaatkan untuk bikin codingan kita menjadi optimal yaitu ada image, link dan juga scriptnya 
+	- images sendiri disini katanya built on the native image element, jadi dia bisa melakukan lazy load image dan juga dia bisa resizing images berdasrkan device 
+	- kemudian kalau link di dibangun dari tag a dimana katanya disini kalau misalkan pake tag a itu load dulu tapi kalua page tag link dia lebih cepat dan smooth untuk page trasnsitions nya, jadi nggak perlu lakukan load halaman dulu nya 
+	- kemudian ada script ini dibangun berdasarkan script tag dimana disini script kalua misalkan menambhakan script seperti google analitik itu kan sesuatu hal yang cukup lemayan berat dan perlu controlling yang baik supaya performance meningkat nah dengan menggunakan tag script itu jauh lebih baik untuk performance ya
+	- font menggunakan next font yang sudah disediakan next font
+	- static assets yaitu bisa menampilkan seperti images itu tinggal simpan aja di dalam folder public didalam rootnya, nah disini katanya di dalam public kita bisa mereferesns kode kita dengan memulai mengggunakan base url /
+	- kemudian tadi lazy load juga sebetulnya  bukan cumin di image bukan cumin di script tapi juga bisa gunakannya di component, untuk menggunakn component tinggal menggunakan next dynamic kemudian masukan import komponennya ke dalam dynamic tersebut 
+	- untuk component a di load immediately di dalam client bundle 
+	- untuk component b dirender opsional atu sesuai kebutuhan kalua kondisi nya memenuhi maka dia akan di render 
+	- kemudian utuk component c karena ssr nya di false maka load only on the client side 
+	- kalau misalkan component nya belum berhasil ke load maka tampilkan loading
+
+19. SEO & Metadata:
+	- next js punya metadata api yang bisa digunakan untuk mendefine sebuah metadata dari aplikasi 
+	- biasnya metadata itu berupa meta dan link yang berada di dalam tag head sebuah html tujuannya untuk me improve seo biasanya dan juga web shareabilitiy
+	- ada 2 cara yang bisanya untuk menambahkan meta data ke dalam sebuah aplikasi yang pertama ada config based metadata yaitu adalah mengunakan static metadata object ataupun dynamic nya dan juga file based metadata 
+	- kalau kita mau pakai metadata itu harus menggunkan server component, nah kalau mau pakai metadata di next js itu nggak bisa untuk client component 
+	- manifest.json ini biasanya adalah untuk meyimpan informasi mengenai website atai web aplication untuk browser kita, nah salah satu kenggunannya untuk apa? mungkin teman-teman sudah pernah tau progresive web app atau pwa jadi web kita bisa di instal di dalam komputer kita atau kedalam device tepatnya karena di mobile juga bisa kita install sehingga nanti dia bisa langsung kita jalankan tanpa harus menggunakan browser nah itu bisa digunakan menggunakan manifest.json ini jadi kita butuh untuk manifest.json
+	- lalu ada opengraph-image dan twitter-image bisa menggunakan tag meta seperti dokumentasi di next js itu juga bisa kita gunakan di dalam metadata nya, ini bisanya digunakan untuk sharebell, dan untuk image di opengraph itu biasanya diambil dari cover imagenya misalnya kalau blog di share dll
+	- kemudian ada yang namaya yaitu robots.txt ini yaitu standard file yang digunakan supaya nanti apakah website nya itu diperbolehkan untuk diakses oleh searh engine coller, kalau misalkan di allow nanti akan bisa di tampilkan di dalam search engine nya, tapi kalau misalkan kita dia di disallow maka bisanya tidak ditampilkan
+	- fungsi dari robots.txt ini apa? kalau kita sudah bekerja dengan yang namanya evnviropment ada env production ada env staging, nah kalau staging mungkin robots.txt ini akan kita lakukan disallow karena staging itu biasa digunakan untuk texting aja, jadi internal dari team yang mendevelop yang boleh mengakses nya, tapi kalua misalnya production itu kan sesuatu hal yang bisa di akses oleh user dan kita pengen gitu kalau kita ngesearch kayak tdi misalnya metanesia dia akan langsung muncul di google dia harus yang pakai namannya robots.txt
+	- fungsi yang paling Utama untuk robots.txt yaitu untuk memudahkan pencarian atai search engine
+	- sitemap.xml fungsi yaitu hamper mirip dengan robots.txt adalah bagaimana untuk bantu search engine melakukan crawling terdap setiap halaman yang ada di dalam website kita 
+	- nah secara default itu kita bisa ini menggunakan static sitemap.xml, jadi nanti nya semua di url yang di crawling oleh robotnya itu nanti di daftarkan di sini, kalua kita pakai codingan lebih dynamic atau date nya berubah-rubah
+	- biasanya pengunaan robots.txr dan sitemap.xml itu dimanana? itu biasanya di google search console
+	- google search console itu adalah sebuah tools yang disediakan oleh google untuk meningkatkan pencarian kita nanti tinggal didaftarkan aja domainnya disini dan kemudian sitemap nya bisa kita masukkan
+	- karena next js app router sudah menyediakan fitur metadata ini nya sehingga mudah mengimplementasikannya dan juga tentunya dokumentasi yang jelas lebih mudah untuk mencari tau bagaiman cara untuk kodingannya
+
+20. Custom Error Page: 
+	- jadi kalau di dalam next app router itu kita bisa menggunakan sebuah file special Namanya not-found.js|ts ketika nanti halamnya itu tidak di temukan 
+	- error juga bisa kita handle menggunkan error.tsx
+
+21. Unit Testing: 
+	- biar kode bisa naikan ke production itu harus di lakukan yang Namanya unit testing dan standardrisasi nya harus ter coverage berapa persen 
+	- untuk mesetup unit testing di dalam next js app roter itu sama saja dengan pages router menggunkan jest 
+	- untuk unit testing menggunakan jest dan react testing library 
+	- npm install --save-dev jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+	- npm i --save-dev @types/jest
+	- "test": "jest --passWithNoTests -u",
+	- "test:cover": "npm run test -- --coverage",
+	- "test:watch": "jest --watch"
+	- npm run test:cover
+	- npm run test 
+	- npm i --save-dev ts-node
+	- biasanya kalau di perusahaan itu rata-rata adalah di atas 80% untuk coverage testing baru boleh naik ke production
+
+22. Hosting Vercel:
+	- npm i swr => buat library fetch data disis client
+	- untuk masalah data.data karena data nya belum ke load solusinya data?.data karena kalau datanya sudah siap baru kita render, ya kalau nggak ya udah tidak di render
+
